@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} | About {% endblock %}
+
+{% block content %}
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1 class="display-4">About Electric Cars Co</h1>
+                <p class="lead">Petrol and diesel are coming to an end – so when should you upgrade to an electric car?</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'index' %}">
+                        <i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="breadcrumb-item active"> About</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section id="about" class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>We Can Help You Find The Perfect Electric Car</h2>
+                <p class="lead">Electric cars sales still represent a tiny proportion of new vehicle sales each month, but growth in this sector continues to accelerate.</p>
+                <img src="{% static 'img/about.jpg' %}" alt="Electric parking bay">
+                <p class="mt-4">There’s plenty of choice out there, but with the market likely to evolve throughout the decade, savvy buyers looking for the best cost-to-value ratio could find themselves stuck in the same paradox as those who endlessly wait for the next iPhone.</p>
+            </div>
+            <div class="col-md-4">
+                {% if best_sales %}
+                {% for salesexecutive in best_sales %}
+                <div class="card">
+                    <img class="card-img-top" src="{{ salesexecutive.photo.url }}" alt="Seller of the month">
+                    <div class="card-body">
+                        <h5 class="card-title">Sales Person Of The Month</h5>
+                        <h6 class="text-secondary">{{ salesexecutive.name }}</h6>
+                        <p class="card-text">{{ salesexecutive.description }}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Work -->
+<section id="work" class="bg-dark text-white text-center">
+    <h2 class="display-4">The Electric Car Company Are Here To Help You!</h2>
+    <h4><i>"With charging cost, this can vary significantly. Some public chargers located in places like supermarkets <br>are free to use for the duration of your stay"</i></h4>
+    <hr>
+    <a href="{% url 'listings' %}" class="btn btn-secondary text-white btn-lg">View Our Car Listings</a>
+</section>
+
+<!-- Team -->
+<section id="team" class="py-5">
+    <div class="container">
+        <h2 class="text-center">Our Team</h2>
+        <div class="row text-center">
+            {% if salesexecutives %}
+            {% for salesexecutive in salesexecutives %}
+            <div class="col-md-4">
+                <img src="{{ salesexecutive.photo.url }}" alt="" class="rounded-circle mb-3">
+                <h4>{{ salesexecutive.name }}</h4>
+                <p class="text-success">
+                    <i class="fas fa-award text-success mb-3"></i> Sales Executive</p>
+                <hr>
+                <p>
+                    <i class="fas fa-phone"></i> {{ salesexecutive.phone}}</p>
+                <p>
+                    <i class="fas fa-envelope-open"></i> {{ salesexecutive.email }}</p>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-md-12">
+                <p>No Sales Executives Available</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}
