@@ -14,5 +14,5 @@
 - Create/ Register accounts
 - Car listings can be update and new cars uploaded
 ***
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/51457442/120704555-9f3f2000-c4ae-11eb-8666-c477217fd57c.gif)
+![electric_cars](https://user-images.githubusercontent.com/51457442/125172971-7f3d0380-e1b4-11eb-9be3-b0b51b7a8af7.png)
 ***
